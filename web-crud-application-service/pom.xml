@@ -13,6 +13,14 @@
 		<java.version>17</java.version>
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.course.springboot</groupId>
+			<artifactId>web-crud-application-db</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
