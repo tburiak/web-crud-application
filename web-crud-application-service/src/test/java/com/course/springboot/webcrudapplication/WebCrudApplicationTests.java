@@ -8,6 +8,7 @@ class WebCrudApplicationTests {
 
 	@Test
 	void contextLoads() {
+		WebCrudApplication.main(new String[]{});
 	}
 
 }
