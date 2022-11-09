@@ -1,9 +1,9 @@
-package com.course.java.module.springboot.crudapplication.repository.entity;
+package com.course.springboot.webcrudapplication.persistence.repository.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class UserEntity {
     private String lastName;
 
     @Column(name = "birth_date")
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
 
     @Column(name = "gender")
     private String gender;

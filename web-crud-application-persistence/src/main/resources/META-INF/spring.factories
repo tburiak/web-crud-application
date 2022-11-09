@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.course.java.module.springboot.crudapplication.configuration.PersistenceConfiguration
+  com.course.springboot.webcrudapplication.persistence.configuration.PersistenceConfiguration

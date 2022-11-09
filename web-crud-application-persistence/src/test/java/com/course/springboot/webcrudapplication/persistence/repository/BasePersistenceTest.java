@@ -1,6 +1,6 @@
-package com.course.java.module.springboot.crudapplication.repository;
+package com.course.springboot.webcrudapplication.persistence.repository;
 
-import com.course.java.module.springboot.crudapplication.configuration.PersistenceConfiguration;
+import com.course.springboot.webcrudapplication.persistence.configuration.PersistenceConfiguration;
 import org.hibernate.Session;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
