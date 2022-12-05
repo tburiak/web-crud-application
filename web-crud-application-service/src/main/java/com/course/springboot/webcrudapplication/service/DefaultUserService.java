@@ -5,6 +5,7 @@ import com.course.springboot.webcrudapplication.persistence.repository.UserEntit
 import com.course.springboot.webcrudapplication.persistence.repository.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +23,7 @@ public class DefaultUserService implements UserService{
     public Optional<UserEntity> getUserById(int id) {
         return userEntityRepository.findById(id);
     }
-
+    @Transactional
     public Optional<UserEntity> createUser(UserRequest user) {
         UserEntity userEntity = UserEntity.builder()
                 .lastName(user.getLastName())
@@ -36,13 +37,12 @@ public class DefaultUserService implements UserService{
 
     public Optional<UserEntity> updateUser(int id, UserRequest user) {
         Optional<UserEntity> userToUpdate = userEntityRepository.findById(id);
-        userToUpdate.ifPresent(entity -> userEntityRepository.save(entity.toBuilder()
+        return userToUpdate.map(entity -> userEntityRepository.save(entity.toBuilder()
                 .lastName(user.getLastName())
                 .firstName(user.getFirstName())
                 .birthDate(user.getBirthDate())
                 .gender(user.getGender())
                 .build()));
-        return userToUpdate;
     }
 
     public boolean removeUserById(int id) {

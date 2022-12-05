@@ -25,22 +25,16 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class UserRestController {
     private final UserService userService;
 
-//    @GetMapping(value = "/users")
-//    public ResponseEntity<List<UserEntity>> getUsers() {
-//        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
-//    }
-
     @GetMapping(value = "/users")
-    public String [] getUsers() {
-        return new String[] {"User1", "User2", "User3"};
+    public ResponseEntity<List<UserEntity>> getUsers() {
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
-
 
     @PostMapping(value = "/users")
     public ResponseEntity<UserEntity> createUser(@RequestBody UserRequest user) {
        Optional<UserEntity> userEntity = userService.createUser(user);
        return userEntity.map(entity -> new ResponseEntity<>(entity, HttpStatus.CREATED))
-                .orElseThrow(() -> new UserServiceException("Not found user: " + user));
+                .orElseThrow(() -> new UserServiceException("Unable to save user: " + user));
     }
 
     @GetMapping(value = "/users/{id}")

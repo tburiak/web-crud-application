@@ -12,7 +12,6 @@ public class ResourceServerConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.mvcMatcher("/api/users/**").authorizeRequests()
           .mvcMatchers("/api/users/**\"").access("hasAuthority('SCOPE_users.read')")
-          .mvcMatchers("/api/users/**\"").access("hasRole('ROLE_ADMIN')")
           .and()
           .oauth2ResourceServer()
           .jwt();
